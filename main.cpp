@@ -1,12 +1,20 @@
-#include<iostream>
+#include <map>
+#include <iostream>
 
 class Danmaku {
+private:
+    std::string _uid = "";
+    std::string _time = "";
+    std::string _content = "";
+    std::string _startTime = "";
+
 public:
-    static void setStartTime(double &time) {
-        _time = time;
+    void setStartTime(std::string &startTime) {
+        _startTime = startTime;
+        std::cout << "start time = " << _startTime << std::endl;
     }
 
-    static bool uidcmp(std::string &uid) {
+    bool uidcmp(std::string &uid) {
         bool equal = true;
         for (int i = 0; i < uid.length(); ++i) {
             if (uid[i] != _uid[i]) {
@@ -16,14 +24,13 @@ public:
         }
         return equal;
     }
-
-private:
-    static double _startTime;
-    static double _time;
-    static std::string _uid;
-    static std::string _content;
 };
 
 int main() {
+    Danmaku i_danmaku;
+    std::string startTime = "1586262306621";
+
+    i_danmaku.setStartTime(startTime);
+
     return 0;
 }
